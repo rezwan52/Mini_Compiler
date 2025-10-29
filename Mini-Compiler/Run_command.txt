@@ -1,0 +1,88 @@
+#Lexical Analysis:
+
+flex lexer.l
+gcc lex.yy.c -o lexer
+./lexer < input0.cpp
+
+
+
+#Symbol Table:
+
+
+lex symbol.l
+gcc lex.yy.c -o symbol
+./symbol < input0.cpp
+
+
+
+#syntax Analysis:
+
+bison -d syntax.y
+flex lexical.l
+gcc syntax.tab.c lex.yy.c -o parser
+./parser < input1.cpp
+
+
+
+
+Abstract Syntax Tree:
+
+
+python3 ast-2.py input2.cpp
+
+
+
+
+
+
+#intermediate Code:
+
+lex tac.l
+yacc -d tac.y
+gcc lex.yy.c y.tab.c -o tac
+./tac < input3.cpp
+
+
+#code optimize:
+
+
+
+lex optimize.l
+gcc lex.yy.c -o optimize -lfl
+./optimize < input.txt
+
+
+
+python3 icg_optimize.py input.txt 
+
+
+
+#Assembly:
+
+
+
+lex assembly.l
+gcc lex.yy.c -o assembly
+./assembly < input4.txt
+
+
+
+python3 assembly.py input4.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
